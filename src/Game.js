@@ -1,9 +1,6 @@
-import Player from './Player';
 import Board from './board/board';
 import React, { Component } from 'react';
-import TickChecker from './TickChecker';
 import Ticker from './Ticker';
-import Circle from './circle/circle';
 import ScoreBoard from './scoreboard/scoreboard';
 class Game extends Component {
   constructor(props) {
@@ -40,10 +37,6 @@ class Game extends Component {
     let surface = [...this.state.surface];
     const ticker = new Ticker(surface);
     if (!ticker.tick(x, y, nextPlayer.char)) return;
-    if (!ticker.tickAble(nextPlayer.char)) {
-      this.changePlayer();
-      return;
-    }
     this.updateSurface(ticker.surface);
     this.updateScore(this.countScore());
     this.changePlayer();
@@ -64,6 +57,13 @@ class Game extends Component {
       ...this.state,
       players: players
     });
+    const surface = [...this.state.surface];
+    const ticker = new Ticker(surface);
+    const nextPlayer = this.state.players.find(
+      player => player.active === true
+    );
+    if (!ticker.tickAble(nextPlayer.char) && this.isFinished())
+      return this.changePlayer();
   }
   updateScore(scores) {
     let players = [...this.state.players];
@@ -79,13 +79,21 @@ class Game extends Component {
     let O = 0;
     for (let i = 0; i < 8; i++) {
       for (let j = 0; j < 8; j++) {
-        if (this.state.surface[i][j] == 'X') X++;
-        if (this.state.surface[i][j] == 'O') O++;
+        if (this.state.surface[i][j] === 'X') X++;
+        if (this.state.surface[i][j] === 'O') O++;
       }
     }
     return [X, O];
   }
-
+  isFinished() {
+    const surface = [...this.state.surface];
+    for (let i = 0; i < 8; i++) {
+      for (let j = 0; j < 8; j++) {
+        if (surface[i][j] === '') return false;
+      }
+    }
+    return true;
+  }
   render() {
     return (
       <div className="Game">

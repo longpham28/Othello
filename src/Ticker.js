@@ -54,14 +54,14 @@ class Ticker {
   }
   tick_left(x, y, c) {
     y--;
-    while (this.surface[x][y] != c) {
+    while (this.surface[x][y] !== c) {
       this.surface[x][y] = c;
       y--;
     }
   }
   tick_right(x, y, c) {
     y++;
-    while (this.surface[x][y] != c) {
+    while (this.surface[x][y] !== c) {
       this.surface[x][y] = c;
       y++;
     }
@@ -69,7 +69,7 @@ class Ticker {
   tick_down_left(x, y, c) {
     x++;
     y--;
-    while (this.surface[x][y] != c) {
+    while (this.surface[x][y] !== c) {
       this.surface[x][y] = c;
       x++;
       y--;
@@ -77,7 +77,7 @@ class Ticker {
   }
   tick_down_middle(x, y, c) {
     x++;
-    while (this.surface[x][y] != c) {
+    while (this.surface[x][y] !== c) {
       this.surface[x][y] = c;
       x++;
     }
@@ -85,7 +85,7 @@ class Ticker {
   tick_down_right(x, y, c) {
     x++;
     y++;
-    while (this.surface[x][y] != c) {
+    while (this.surface[x][y] !== c) {
       this.surface[x][y] = c;
       x++;
       y++;
