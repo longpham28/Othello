@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Layout>
-        <h1>Othello Game</h1>
+        <h1 style={{ fontSize: '40px' }}>Othello Game</h1>
         <Game />
       </Layout>
     </div>

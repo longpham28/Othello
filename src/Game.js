@@ -1,11 +1,15 @@
 import Player from './Player';
 import Board from './board/board';
 import React, { Component } from 'react';
+import TickChecker from './TickChecker';
+import Ticker from './Ticker';
+import Circle from './circle/circle';
+import ScoreBoard from './scoreboard/scoreboard';
 class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      board: [
+      surface: [
         ['', '', '', '', '', '', '', ''],
         ['', '', '', '', '', '', '', ''],
         ['', '', '', '', '', '', '', ''],
@@ -15,29 +19,82 @@ class Game extends Component {
         ['', '', '', '', '', '', '', ''],
         ['', '', '', '', '', '', '', '']
       ],
-      nextPlayer: 'X'
+      players: [
+        {
+          char: 'X',
+          active: true,
+          score: 2
+        },
+        {
+          char: 'O',
+          active: false,
+          score: 2
+        }
+      ]
     };
   }
   tick(x, y) {
-    let board = [...this.state.board];
-    if (board[x][y] != '') return;
-    board[x][y] = this.state.nextPlayer;
-    this.updateBoard(board);
-    let nextPlayer = this.state.nextPlayer === 'X' ? 'O' : 'X';
-    this.changePlayer(nextPlayer);
+    const nextPlayer = this.state.players.find(
+      player => player.active === true
+    );
+    let surface = [...this.state.surface];
+    const ticker = new Ticker(surface);
+    if (!ticker.tick(x, y, nextPlayer.char)) return;
+    if (!ticker.tickAble(nextPlayer.char)) {
+      this.changePlayer();
+      return;
+    }
+    this.updateSurface(ticker.surface);
+    this.updateScore(this.countScore());
+    this.changePlayer();
   }
-  updateBoard(board) {
+  updateSurface(surface) {
     this.setState({
       ...this.state,
-      board: board
+      surface: surface
     });
   }
-  changePlayer(char) {
-    this.setState({ ...this.state, nextPlayer: char });
+  changePlayer() {
+    let players = [...this.state.players];
+    players = players.map(player => {
+      player.active = !player.active;
+      return player;
+    });
+    this.setState({
+      ...this.state,
+      players: players
+    });
   }
+  updateScore(scores) {
+    let players = [...this.state.players];
+    players[0].score = scores[0];
+    players[1].score = scores[1];
+    this.setState({
+      ...this.state,
+      player: players
+    });
+  }
+  countScore() {
+    let X = 0;
+    let O = 0;
+    for (let i = 0; i < 8; i++) {
+      for (let j = 0; j < 8; j++) {
+        if (this.state.surface[i][j] == 'X') X++;
+        if (this.state.surface[i][j] == 'O') O++;
+      }
+    }
+    return [X, O];
+  }
+
   render() {
     return (
-      <Board squareTicked={(x, y) => this.tick(x, y)} rows={this.state.board} />
+      <div className="Game">
+        <ScoreBoard players={this.state.players} />
+        <Board
+          squareTicked={(x, y) => this.tick(x, y)}
+          rows={this.state.surface}
+        />
+      </div>
     );
   }
 }

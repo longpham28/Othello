@@ -1,0 +1,14 @@
+.ScoreBoard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+}
+.Score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
+  font-size: 30px;
+  padding: 1rem;
+}
