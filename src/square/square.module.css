@@ -1,0 +1,10 @@
+.Square {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+}
