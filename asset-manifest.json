@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Othello/static/css/main.4135f8a4.chunk.css",
-    "main.js": "/Othello/static/js/main.9b00e93e.chunk.js",
-    "main.js.map": "/Othello/static/js/main.9b00e93e.chunk.js.map",
+    "main.js": "/Othello/static/js/main.60c09aca.chunk.js",
+    "main.js.map": "/Othello/static/js/main.60c09aca.chunk.js.map",
     "runtime~main.js": "/Othello/static/js/runtime~main.951e2ceb.js",
     "runtime~main.js.map": "/Othello/static/js/runtime~main.951e2ceb.js.map",
     "static/js/2.2dc22022.chunk.js": "/Othello/static/js/2.2dc22022.chunk.js",
     "static/js/2.2dc22022.chunk.js.map": "/Othello/static/js/2.2dc22022.chunk.js.map",
     "index.html": "/Othello/index.html",
-    "precache-manifest.dcfe629e16e033e5f6f3b38b2761fc87.js": "/Othello/precache-manifest.dcfe629e16e033e5f6f3b38b2761fc87.js",
+    "precache-manifest.b3dcc25e2e93f604be210c161d93cf8c.js": "/Othello/precache-manifest.b3dcc25e2e93f604be210c161d93cf8c.js",
     "service-worker.js": "/Othello/service-worker.js",
     "static/css/main.4135f8a4.chunk.css.map": "/Othello/static/css/main.4135f8a4.chunk.css.map",
     "static/media/logo.svg": "/Othello/static/media/logo.5d5d9eef.svg"
