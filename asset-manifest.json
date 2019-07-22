@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Othello/static/css/main.9409dfad.chunk.css",
-    "main.js": "/Othello/static/js/main.32a35bd1.chunk.js",
-    "main.js.map": "/Othello/static/js/main.32a35bd1.chunk.js.map",
+    "main.css": "/Othello/static/css/main.5734d555.chunk.css",
+    "main.js": "/Othello/static/js/main.66639ed4.chunk.js",
+    "main.js.map": "/Othello/static/js/main.66639ed4.chunk.js.map",
     "runtime~main.js": "/Othello/static/js/runtime~main.951e2ceb.js",
     "runtime~main.js.map": "/Othello/static/js/runtime~main.951e2ceb.js.map",
-    "static/js/2.c54570bd.chunk.js": "/Othello/static/js/2.c54570bd.chunk.js",
-    "static/js/2.c54570bd.chunk.js.map": "/Othello/static/js/2.c54570bd.chunk.js.map",
+    "static/js/2.b3bb5761.chunk.js": "/Othello/static/js/2.b3bb5761.chunk.js",
+    "static/js/2.b3bb5761.chunk.js.map": "/Othello/static/js/2.b3bb5761.chunk.js.map",
     "index.html": "/Othello/index.html",
-    "precache-manifest.809b706baa4d74c49550cc4c5ef065d4.js": "/Othello/precache-manifest.809b706baa4d74c49550cc4c5ef065d4.js",
+    "precache-manifest.a37ccf88f6dd7429f207ab7bea29e9a3.js": "/Othello/precache-manifest.a37ccf88f6dd7429f207ab7bea29e9a3.js",
     "service-worker.js": "/Othello/service-worker.js",
-    "static/css/main.9409dfad.chunk.css.map": "/Othello/static/css/main.9409dfad.chunk.css.map",
+    "static/css/main.5734d555.chunk.css.map": "/Othello/static/css/main.5734d555.chunk.css.map",
     "static/media/logo.svg": "/Othello/static/media/logo.5d5d9eef.svg"
   }
 }
