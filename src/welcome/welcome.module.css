@@ -12,6 +12,6 @@
 }
 
 .Button:hover {
-  border: 1px solid red;
-  color: red;
+  color: black;
+  background-color: white;
 }

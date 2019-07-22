@@ -4,12 +4,13 @@ import Ticker from './Ticker';
 import TickChecker from './TickChecker';
 import ScoreBoard from './scoreboard/scoreboard';
 import Player, { ComputerPlayer } from './Player';
+import Loading from './loading/loading';
 class Game extends Component {
   constructor(props) {
     super(props);
     const mode = props.mode;
     let players;
-    if (mode === 'single') players = [new Player('X'), new Player('O')];
+    if (mode === 'multi') players = [new Player('X'), new Player('O')];
     else players = [new Player('X'), new ComputerPlayer('O')];
     players[0].setActive();
     this.state = {
@@ -24,10 +25,13 @@ class Game extends Component {
         ['', '', '', '', '', '', '', ''],
         ['', '', '', '', '', '', '', '']
       ],
-      players
+      players,
+      loading: false,
+      loadingTime: 1000
     };
   }
   tick(x, y) {
+    if (this.state.loading) return;
     let nextPlayer = this.getNextPlayer();
     let surface = [...this.state.surface];
     const ticker = new Ticker(surface);
@@ -62,8 +66,13 @@ class Game extends Component {
       return this.changePlayer();
     }
     if (nextPlayer.type === 'Computer') {
+      if (this.isFinished()) return;
       const [a, b] = nextPlayer.getInput(surface);
-      this.tick(a, b);
+      this.setState({ ...this.state, loading: true });
+      setTimeout(() => {
+        this.setState({ ...this.state, loading: false });
+        this.tick(a, b);
+      }, 1000);
     }
   }
   updateScore(scores) {
@@ -99,6 +108,7 @@ class Game extends Component {
     return (
       <div className="Game">
         <ScoreBoard players={this.state.players} />
+        <Loading opacity={this.state.loading ? 1 : 0} />
         <Board
           squareTicked={(x, y) => this.tick(x, y)}
           rows={this.state.surface}
