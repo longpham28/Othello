@@ -1,0 +1,17 @@
+.Welcome {
+  display: flex;
+}
+
+.Button {
+  padding: 1rem;
+  border: 1px solid white;
+  border-radius: 30px;
+  margin: 20px;
+  cursor: pointer;
+  width: 6rem;
+}
+
+.Button:hover {
+  border: 1px solid red;
+  color: red;
+}

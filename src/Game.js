@@ -1,11 +1,19 @@
 import Board from './board/board';
 import React, { Component } from 'react';
 import Ticker from './Ticker';
+import TickChecker from './TickChecker';
 import ScoreBoard from './scoreboard/scoreboard';
+import Player, { ComputerPlayer } from './Player';
 class Game extends Component {
   constructor(props) {
     super(props);
+    const mode = props.mode;
+    let players;
+    if (mode === 'single') players = [new Player('X'), new Player('O')];
+    else players = [new Player('X'), new ComputerPlayer('O')];
+    players[0].setActive();
     this.state = {
+      mode: mode,
       surface: [
         ['', '', '', '', '', '', '', ''],
         ['', '', '', '', '', '', '', ''],
@@ -16,30 +24,20 @@ class Game extends Component {
         ['', '', '', '', '', '', '', ''],
         ['', '', '', '', '', '', '', '']
       ],
-      players: [
-        {
-          char: 'X',
-          active: true,
-          score: 2
-        },
-        {
-          char: 'O',
-          active: false,
-          score: 2
-        }
-      ]
+      players
     };
   }
   tick(x, y) {
-    const nextPlayer = this.state.players.find(
-      player => player.active === true
-    );
+    let nextPlayer = this.getNextPlayer();
     let surface = [...this.state.surface];
     const ticker = new Ticker(surface);
     if (!ticker.tick(x, y, nextPlayer.char)) return;
     this.updateSurface(ticker.surface);
     this.updateScore(this.countScore());
     this.changePlayer();
+  }
+  getNextPlayer() {
+    return this.state.players.find(player => player.active === true);
   }
   updateSurface(surface) {
     this.setState({
@@ -58,12 +56,15 @@ class Game extends Component {
       players: players
     });
     const surface = [...this.state.surface];
-    const ticker = new Ticker(surface);
-    const nextPlayer = this.state.players.find(
-      player => player.active === true
-    );
-    if (!ticker.tickAble(nextPlayer.char) && this.isFinished())
+    const tickChecker = new TickChecker(surface);
+    let nextPlayer = this.getNextPlayer();
+    if (!tickChecker.tickAble(nextPlayer.char) && !this.isFinished()) {
       return this.changePlayer();
+    }
+    if (nextPlayer.type === 'Computer') {
+      const [a, b] = nextPlayer.getInput(surface);
+      this.tick(a, b);
+    }
   }
   updateScore(scores) {
     let players = [...this.state.players];

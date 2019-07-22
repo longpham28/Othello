@@ -4,14 +4,7 @@ class Ticker {
     this.tickChecker = new TickChecker(surface);
     this.surface = surface;
   }
-  tickAble(c) {
-    for (let i = 0; i < 8; i++) {
-      for (let j = 0; j < 8; j++) {
-        if (this.tickChecker.check_available(i, j, c)) return true;
-      }
-    }
-    return false;
-  }
+
   tick(x, y, c) {
     if (!this.tickChecker.check_available(x, y, c)) return false;
     if (this.tickChecker.check_up_left(x, y, c)) this.tick_up_left(x, y, c);

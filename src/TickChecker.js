@@ -2,6 +2,14 @@ class TickChecker {
   constructor(surface) {
     this.surface = surface;
   }
+  tickAble(c) {
+    for (let i = 0; i < 8; i++) {
+      for (let j = 0; j < 8; j++) {
+        if (this.check_available(i, j, c)) return true;
+      }
+    }
+    return false;
+  }
   check_available(x, y, c) {
     const surface = this.surface;
     if (surface[x][y] !== '') return false;
