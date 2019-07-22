@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "17348e93eaeb51bddcf8999a43439668",
+    "revision": "087ac8a7a5a3c35bca338697a259dee4",
     "url": "/Othello/index.html"
   },
   {
-    "revision": "cf4f5c01e295c3dd43a9",
-    "url": "/Othello/static/css/main.4135f8a4.chunk.css"
+    "revision": "3b0b0a98390c0505ba3d",
+    "url": "/Othello/static/css/main.9409dfad.chunk.css"
   },
   {
-    "revision": "8f5a58e67193d441e3c6",
-    "url": "/Othello/static/js/2.2dc22022.chunk.js"
+    "revision": "9adb35d33ab0c6f65317",
+    "url": "/Othello/static/js/2.c54570bd.chunk.js"
   },
   {
-    "revision": "cf4f5c01e295c3dd43a9",
-    "url": "/Othello/static/js/main.60c09aca.chunk.js"
+    "revision": "3b0b0a98390c0505ba3d",
+    "url": "/Othello/static/js/main.32a35bd1.chunk.js"
   },
   {
     "revision": "e53834819ef503975a99",

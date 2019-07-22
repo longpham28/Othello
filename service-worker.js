@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Othello/precache-manifest.b3dcc25e2e93f604be210c161d93cf8c.js"
+  "/Othello/precache-manifest.809b706baa4d74c49550cc4c5ef065d4.js"
 );
 
 self.addEventListener('message', (event) => {
