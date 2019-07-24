@@ -6,3 +6,12 @@
   flex-direction: column;
   align-items: center;
 }
+
+.Replay {
+  padding: 1rem;
+  border: 1px solid white;
+  border-radius: 30px;
+  margin: 20px;
+  cursor: pointer;
+  width: 6rem;
+}

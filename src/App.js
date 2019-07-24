@@ -13,7 +13,7 @@ function App() {
       <Layout>
         <h1 style={{ fontSize: '40px' }}>Othello Game</h1>
         {playing ? (
-          <Game mode={playMode} />
+          <Game replay={() => setPlaying(false)} mode={playMode} />
         ) : (
           <Welcome
             button1Clicked={() => {

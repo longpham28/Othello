@@ -27,7 +27,8 @@ class Game extends Component {
       ],
       players,
       loading: false,
-      loadingTime: 1000
+      loadingTime: 1000,
+      finished: false
     };
   }
   tick(x, y) {
@@ -66,7 +67,10 @@ class Game extends Component {
       return this.changePlayer();
     }
     if (nextPlayer.type === 'Computer') {
-      if (this.isFinished()) return;
+      if (this.isFinished()) {
+        this.setState({ ...this.state, finished: true });
+        return;
+      }
       const [a, b] = nextPlayer.getInput(surface);
       this.setState({ ...this.state, loading: true });
       setTimeout(() => {
@@ -113,6 +117,9 @@ class Game extends Component {
           squareTicked={(x, y) => this.tick(x, y)}
           rows={this.state.surface}
         />
+        <button onClick={this.props.replay} className="Replay">
+          Replay
+        </button>
       </div>
     );
   }
